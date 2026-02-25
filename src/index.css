@@ -1,0 +1,43 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap');
+
+@theme {
+  --font-sans: "Outfit", ui-sans-serif, system-ui, sans-serif;
+  
+  --color-brand-purple: #7C3AED;
+  --color-brand-purple-dark: #4C1D95;
+  --color-brand-pink: #DB2777;
+  --color-brand-blue: #2563EB;
+  --color-brand-yellow: #FBBF24;
+  --color-brand-orange: #F97316;
+  --color-brand-green: #10B981;
+}
+
+@layer base {
+  body {
+    @apply text-slate-900 antialiased bg-white;
+  }
+}
+
+@layer utilities {
+  .bg-hero-gradient {
+    background: linear-gradient(135deg, #7C3AED 0%, #DB2777 100%);
+  }
+  
+  .bg-plus-pattern {
+    background-image: radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+
+  .glass-card {
+    @apply bg-white/10 backdrop-blur-md border border-white/20 shadow-xl;
+  }
+
+  .btn-whatsapp {
+    @apply px-8 py-4 bg-brand-green text-white font-bold rounded-full shadow-lg hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2;
+  }
+
+  .btn-outline-white {
+    @apply px-8 py-4 bg-white/20 text-white font-bold rounded-full border-2 border-white/40 hover:bg-white/30 hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2;
+  }
+}
