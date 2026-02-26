@@ -31,6 +31,9 @@ import boomerang4 from '../images/boomerang4.webp';
 import boomerang5 from '../images/boomerang5.webp';
 import boomerang6 from '../images/boomerang6.webp';
 import boomerang7 from '../images/boomerang7.webp';
+import reviewer1 from '../images/reviewer1.webp';
+import reviewer2 from '../images/reviewer2.webp';
+import reviewer3 from '../images/reviewer3.webp';
 
 // --- Constants & Data ---
 
@@ -96,21 +99,21 @@ const TESTIMONIALS = [
     role: "Mamá de Sofía (7 años)",
     text: "¡Increíble servicio! Los niños no pararon de jugar en toda la fiesta. El equipo de Boomerang fue súper profesional y puntual. Mi hija aún habla de su fiesta de cumpleaños.",
     rating: 5,
-    avatar: "https://i.pravatar.cc/150?u=maria"
+    avatar: reviewer1
   },
   {
     name: "Roberto Martínez",
     role: "Papá de Diego (5 años)",
     text: "Contratamos el paquete completo y valió cada peso. La decoración quedó espectacular y los animadores mantuvieron a los niños entretenidos por horas. 100% recomendado.",
     rating: 5,
-    avatar: "https://i.pravatar.cc/150?u=roberto"
+    avatar: reviewer2
   },
   {
     name: "Ana Lucía Ramírez",
     role: "Mamá de los gemelos (4 años)",
     text: "Fue la primera fiesta que organizo y Boomerang me hizo sentir muy tranquila. Todo salió perfecto, desde los inflables hasta la música. Los niños estaban felices y eso no tiene precio.",
     rating: 5,
-    avatar: "https://i.pravatar.cc/150?u=analucia"
+    avatar: reviewer3
   }
 ];
 
