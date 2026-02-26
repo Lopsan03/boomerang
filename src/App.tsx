@@ -24,13 +24,13 @@ import {
   Clock
 } from 'lucide-react';
 import { motion, AnimatePresence, useReducedMotion } from 'motion/react';
-import boomerang1 from '../images/boomerang1.png';
-import boomerang2 from '../images/boomerang2.png';
-import boomerang3 from '../images/boomerang3.png';
-import boomerang4 from '../images/boomerang4.png';
-import boomerang5 from '../images/boomerang5.png';
-import boomerang6 from '../images/boomerang6.png';
-import boomerang7 from '../images/boomerang7.png';
+import boomerang1 from '../images/boomerang1.webp';
+import boomerang2 from '../images/boomerang2.webp';
+import boomerang3 from '../images/boomerang3.webp';
+import boomerang4 from '../images/boomerang4.webp';
+import boomerang5 from '../images/boomerang5.webp';
+import boomerang6 from '../images/boomerang6.webp';
+import boomerang7 from '../images/boomerang7.webp';
 
 // --- Constants & Data ---
 
