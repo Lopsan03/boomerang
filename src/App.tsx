@@ -24,6 +24,13 @@ import {
   Clock
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
+import boomerang1 from '../images/boomerang1.png';
+import boomerang2 from '../images/boomerang2.png';
+import boomerang3 from '../images/boomerang3.png';
+import boomerang4 from '../images/boomerang4.png';
+import boomerang5 from '../images/boomerang5.png';
+import boomerang6 from '../images/boomerang6.png';
+import boomerang7 from '../images/boomerang7.png';
 
 // --- Constants & Data ---
 
@@ -378,10 +385,9 @@ export default function App() {
             >
               <div className="relative rounded-[2.5rem] overflow-hidden shadow-2xl">
                 <img 
-                  src="https://picsum.photos/seed/balloons/800/600" 
+                  src={boomerang1}
                   alt="Globos de colores" 
                   className="w-full h-auto object-cover"
-                  referrerPolicy="no-referrer"
                 />
               </div>
               
@@ -587,12 +593,12 @@ export default function App() {
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
-              "https://picsum.photos/seed/party-1/800/600",
-              "https://picsum.photos/seed/party-2/800/600",
-              "https://picsum.photos/seed/party-3/800/600",
-              "https://picsum.photos/seed/party-4/800/600",
-              "https://picsum.photos/seed/party-5/800/600",
-              "https://picsum.photos/seed/party-6/800/600"
+              boomerang2,
+              boomerang3,
+              boomerang4,
+              boomerang5,
+              boomerang6,
+              boomerang7
             ].map((url, i) => (
               <motion.div
                 key={i}
@@ -603,7 +609,6 @@ export default function App() {
                   src={url} 
                   alt={`Fiesta Boomerang ${i + 1}`} 
                   className="w-full h-full object-cover"
-                  referrerPolicy="no-referrer"
                 />
               </motion.div>
             ))}
@@ -626,7 +631,7 @@ export default function App() {
           <div className="grid md:grid-cols-2 gap-12">
             <div className="h-[450px] rounded-[2.5rem] overflow-hidden shadow-2xl border-8 border-white">
               <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3593.4444!2d-100.4667!3d25.7667!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjXCsDQ2JzAwLjAiTiAxMDDCsDI4JzAwLjAiVw!5e0!3m2!1ses-419!2smx!4v1620000000000!5m2!1ses-419!2smx" 
+                src={`https://www.google.com/maps?q=${encodeURIComponent(ADDRESS)}&output=embed`}
                 width="100%" 
                 height="100%" 
                 style={{ border: 0 }} 
@@ -645,17 +650,6 @@ export default function App() {
                   <div>
                     <h4 className="text-xl font-black text-slate-900 mb-2">Nuestra Dirección</h4>
                     <p className="text-slate-600 font-medium leading-relaxed">{ADDRESS}</p>
-                  </div>
-                </div>
-                
-                <div className="pt-8 border-t border-slate-100">
-                  <h4 className="text-sm font-black text-slate-400 uppercase tracking-widest mb-6">Áreas de Servicio</h4>
-                  <div className="flex flex-wrap gap-3">
-                    {["García", "Escobedo", "San Nicolás", "Apodaca", "Monterrey", "Santa Catarina"].map((area) => (
-                      <span key={area} className="px-4 py-2 bg-brand-purple/5 text-brand-purple font-bold rounded-xl text-sm border border-brand-purple/10">
-                        {area}
-                      </span>
-                    ))}
                   </div>
                 </div>
                 
