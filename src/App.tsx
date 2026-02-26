@@ -23,7 +23,7 @@ import {
   Facebook,
   Clock
 } from 'lucide-react';
-import { motion, AnimatePresence } from 'motion/react';
+import { motion, AnimatePresence, useReducedMotion } from 'motion/react';
 import boomerang1 from '../images/boomerang1.png';
 import boomerang2 from '../images/boomerang2.png';
 import boomerang3 from '../images/boomerang3.png';
@@ -236,6 +236,21 @@ const SectionHeading = ({ title, subtitle, centered = true, accentColor = "text-
 };
 
 export default function App() {
+  const prefersReducedMotion = useReducedMotion();
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(max-width: 768px)');
+    const updateIsMobile = () => setIsMobile(mediaQuery.matches);
+
+    updateIsMobile();
+    mediaQuery.addEventListener('change', updateIsMobile);
+
+    return () => mediaQuery.removeEventListener('change', updateIsMobile);
+  }, []);
+
+  const enableHeroMotion = !prefersReducedMotion && !isMobile;
+
   useEffect(() => {
     // Add LocalBusiness Schema
     const schema = {
@@ -296,13 +311,13 @@ export default function App() {
         
         {/* Floating Blobs */}
         <motion.div 
-          animate={{ x: [0, 30, 0], y: [0, -30, 0] }}
-          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+          animate={enableHeroMotion ? { x: [0, 30, 0], y: [0, -30, 0] } : undefined}
+          transition={enableHeroMotion ? { duration: 8, repeat: Infinity, ease: "easeInOut" } : undefined}
           className="absolute top-[20%] left-[10%] w-64 h-64 bg-white/10 rounded-full blur-3xl" 
         />
         <motion.div 
-          animate={{ x: [0, -40, 0], y: [0, 40, 0] }}
-          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+          animate={enableHeroMotion ? { x: [0, -40, 0], y: [0, 40, 0] } : undefined}
+          transition={enableHeroMotion ? { duration: 10, repeat: Infinity, ease: "easeInOut" } : undefined}
           className="absolute bottom-[20%] right-[10%] w-96 h-96 bg-brand-pink/20 rounded-full blur-3xl" 
         />
         
@@ -313,15 +328,15 @@ export default function App() {
 
         {/* Floating Icons */}
         <motion.div 
-          animate={{ rotate: [0, 15, 0] }}
-          transition={{ duration: 4, repeat: Infinity }}
+          animate={enableHeroMotion ? { rotate: [0, 15, 0] } : undefined}
+          transition={enableHeroMotion ? { duration: 4, repeat: Infinity } : undefined}
           className="absolute top-[15%] left-[8%] text-brand-yellow opacity-80 hidden md:block"
         >
           <PartyPopper size={80} />
         </motion.div>
         <motion.div 
-          animate={{ scale: [1, 1.2, 1] }}
-          transition={{ duration: 3, repeat: Infinity }}
+          animate={enableHeroMotion ? { scale: [1, 1.2, 1] } : undefined}
+          transition={enableHeroMotion ? { duration: 3, repeat: Infinity } : undefined}
           className="absolute top-[20%] right-[10%] text-white opacity-80 hidden md:block"
         >
           <Star size={60} />
@@ -357,14 +372,14 @@ export default function App() {
             </div>
             
             <motion.div 
-              animate={{ y: [0, 10, 0] }}
-              transition={{ duration: 2, repeat: Infinity }}
+              animate={enableHeroMotion ? { y: [0, 10, 0] } : undefined}
+              transition={enableHeroMotion ? { duration: 2, repeat: Infinity } : undefined}
               className="mt-16 text-white/60 flex flex-col items-center gap-2"
             >
               <div className="w-1 h-8 bg-white/30 rounded-full relative overflow-hidden">
                 <motion.div 
-                  animate={{ top: ['-100%', '100%'] }}
-                  transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
+                  animate={enableHeroMotion ? { top: ['-100%', '100%'] } : undefined}
+                  transition={enableHeroMotion ? { duration: 1.5, repeat: Infinity, ease: "linear" } : undefined}
                   className="absolute w-full h-1/2 bg-white"
                 />
               </div>
@@ -388,6 +403,8 @@ export default function App() {
                   src={boomerang1}
                   alt="Globos de colores" 
                   className="w-full h-auto object-cover"
+                  loading="lazy"
+                  decoding="async"
                 />
               </div>
               
@@ -567,7 +584,7 @@ export default function App() {
                 </div>
                 <p className="text-lg text-slate-600 italic mb-10 leading-relaxed flex-grow">"{t.text}"</p>
                 <div className="flex items-center gap-4 pt-6 border-t border-slate-100">
-                  <img src={t.avatar} alt={t.name} className="w-12 h-12 rounded-full object-cover shadow-md" />
+                  <img src={t.avatar} alt={t.name} className="w-12 h-12 rounded-full object-cover shadow-md" loading="lazy" decoding="async" />
                   <div>
                     <p className="font-black text-slate-900">{t.name}</p>
                     <p className="text-xs font-bold text-slate-400 uppercase tracking-wider">{t.role}</p>
@@ -609,6 +626,8 @@ export default function App() {
                   src={url} 
                   alt={`Fiesta Boomerang ${i + 1}`} 
                   className="w-full h-full object-cover"
+                  loading="lazy"
+                  decoding="async"
                 />
               </motion.div>
             ))}
